@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+
+<h2>Aqui se dan de alta los usuarios</h2>
+<div class="contenedor">
+    #{form @Application.registroUsuario()}
+    <p>
+        <label for="nombre">Tu nombre:</label>
+        <input type="text" name="nombre" id="nombre"/>
+    </p>
+    <p>
+        <label for="telefono">Telefono:</label>
+        <input type="text" name="telefono" id="telefono"/>
+    </p>
+    <div class="contenedor">
+        <label>Fecha</label>
+       <input type="text"id="datepicker" name="fecha"/>
+    </div>
+    <p>
+        <label for="salario">Salario:</label>
+        <input type="text" name="salario" id="salario"/>
+    </p>
+    <p>
+        <input type="submit" class=".formRegistro" value="Enviar" />
+    </p>
+    #{/form}
+</div>

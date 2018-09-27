@@ -1,0 +1,15 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+    <h2>Aqui se dan de baja los usuarios</h2>
+<div class="contenedor">
+    #{form @Application.borrarUsuario()}
+    <p>
+        <label for="idB">coloque el id a borrar:</label>
+        <input type="text" name="idB" id="idB"/>
+    </p>
+
+        <input type="submit" class=".formRegistro" value="Enviar" />
+    </p>
+    #{/form}
+</div>

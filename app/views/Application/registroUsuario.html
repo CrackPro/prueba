@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{if nuevo}
+<h2>Llegaron tus datos</h2>
+<div class="contenedor">
+<p><label>Nombre</label>${nuevo.getNombre()}</p>
+<p><label>salario</label>${nuevo.getSalario()}</p>
+<p><label>Fecha</label>${nuevo.getFecha()}</p>
+<p><label>Telefono</label>${nuevo.getTelefono()}</p>
+
+</div>
+
+#{/if}
+#{else}
+<h2>No llegaron tus datos</h2>
+#{/else}
