@@ -48,52 +48,29 @@ public class Usuario extends Model{
     }
 
     public static String registrarUsuario(String nombre, int telefono, String fecha, int salario){
-        //Aqui va ir la conexion
-        Statement stmt = null;
 
-        try {
-            Connection conn = DB.getConnection();
-            stmt = conn.createStatement();
-            String inserts = "INSERT INTO PRUEBAVIVANCO"
-                    + "(CHARN, NUMERO, FECHA, DECIMALES) " + "VALUES"
+            Conexion cone = new Conexion();
+            String tabla = cone.getTabla();
+            String inserts = "INSERT INTO "+tabla+"(CHARN, NUMERO, FECHA, DECIMALES) " + "VALUES"
                     + "('"+nombre+"','"+telefono+"','"+fecha+"', '"+salario+"')";
-            stmt.executeUpdate(inserts);
-            conn.close();
-        } catch (SQLException e) {
+            cone.ejecutarQ(inserts);
+            cone.cerrarConexion(cone.getConexion());
 
-        }
         return "Exito en el registro";
     }
 
     public static String borrarUsuario(int id){
         //Aqui va lo de borrado
-        Statement stmt = null;
-
-        try {
-            Connection conn = DB.getConnection();
-            stmt = conn.createStatement();
-            String queryDalete ="delete from PRUEBAVIVANCO where IDPRUEBA='"+id+"' ";
-            stmt.executeUpdate(queryDalete);
-            conn.close();
-
-        } catch (SQLException e) {
-
-        }
-        return "Exito en el proceso";
+        Conexion cone = new Conexion();
+        String tabla = cone.getTabla();
+            String queryDalete ="delete from "+tabla+" where IDPRUEBA='"+id+"' ";
+        cone.ejecutarQ(queryDalete);
+        cone.cerrarConexion(cone.getConexion());
+        return "Exito en el registro";
     }
     public static String buscarUsuario(int id){
         //Aqui va lo de borrado
-        Statement stmt = null;
-
-        try {
-            Connection conn = DB.getConnection();
-            stmt = conn.createStatement();
-
-            conn.close();
-        } catch (SQLException e) {
-
-        }
-        return "Exito en el proceso";
+        return "Exito en el registro";
     }
 
 }
