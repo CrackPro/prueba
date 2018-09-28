@@ -1,9 +1,8 @@
-
 package models;
 
 /**
  *
- * @author Ciriaco
+ * @author Vivanco
  */
 import java.sql.*;
 import java.sql.Connection;
@@ -54,6 +53,17 @@ public class Conexion {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+
+    }
+    public ResultSet ejecutarS(String inserts){
+        ResultSet rs=null;
+        try {
+           rs= this.stmt.executeQuery(inserts);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+
+        return rs;
 
     }
 

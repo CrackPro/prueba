@@ -19,9 +19,17 @@ GET /registros                                 Application.registro
 
 GET /baja                                 Application.baja
 
+#pagina del buscador
+
+GET /buscar_usuarios                        Application.buscarUsuarios
+
 #funcion del registro
 
 POST /altaRegistro                          Application.registroUsuario
+
+#pagina para buscarUsuarios
+
+GET /buscar_Usuarios                        Application.buscarUsuarios
 
 # Import CRUD routes
 *      /admin                                   module:crud

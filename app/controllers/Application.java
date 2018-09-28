@@ -22,9 +22,15 @@ public class Application extends Controller {
         render();
     }
 
+    public static void buscarUsuarios(){
+        int idU=0;
+        List<Usuarios> usuarios = Usuario.buscarUsuario(idU);
+        render(usuarios);
+    }
+
     public static void registroUsuario(String nombre, String telefono, String fecha, int salario ){
         int temp1= Integer.parseInt(telefono);
-        Usuario nuevo = new Usuario(nombre, temp1, fecha, salario);
+        Usuario nuevo = new Usuario(1,nombre, temp1, fecha, salario);
         Usuario.registrarUsuario(nombre, temp1, fecha, salario);
 
         render(nuevo);

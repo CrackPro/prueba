@@ -11,7 +11,7 @@ import play.data.validation.*;
 @Entity
 public class Usuario extends Model{
 
-
+    private int idPrueba=0;
     private String charn;
     @Required
     private int numero;
@@ -20,7 +20,8 @@ public class Usuario extends Model{
     @Required
     private int decimales;
 
-    public Usuario(String nombre, int telefono, String fecha, int salario){
+    public Usuario(int id,String nombre, int telefono, String fecha, int salario){
+        this.idPrueba=id;
         this.charn=nombre;
         this.numero= telefono;
         this.fecha = fecha;
@@ -68,9 +69,24 @@ public class Usuario extends Model{
         cone.cerrarConexion(cone.getConexion());
         return "Exito en el registro";
     }
-    public static String buscarUsuario(int id){
-        //Aqui va lo de borrado
-        return "Exito en el registro";
+    public static List buscarUsuario(int id){
+        //Aqui va lo de buscar
+        List<Usuario> resultado = new ArrayList<Usuario>();
+
+        Conexion cone = new Conexion();
+        String tabla = cone.getTabla();
+        String querySelect= "select IDPRUEBA, CHARN, NUMERO, FECHA, DECIMALES from "+tabla;
+        ResultSet rs = cone.ejecutarS(querySelect);
+        try {
+            while (rs.next()) {
+                resultado.add(new Usuario(rs.getInt("IDPRUEBA"), rs.getString("CHARN"), rs.getInt("NUMERO"), rs.getString("FECHA"), rs.getInt("DECIMALES")));
+            }
+        }
+         catch (SQLException e) {
+             System.out.println(e);
+            }
+        cone.cerrarConexion(cone.getConexion());
+        return resultado;
     }
 
 }
