@@ -9,15 +9,29 @@ import play.db.jpa.*;
 import play.data.validation.*;
 
 @Entity
+@Table(name="PRUEBAVIVANCO")
 public class Usuario extends Model{
 
-    private int idPrueba=0;
-    private String charn;
+    @Id
+    @SequenceGenerator(name = "ID_GENERATOR", sequenceName = "USER_PK",allocationSize=1)
+    @GeneratedValue(generator = "ID_GENERATOR", strategy = GenerationType.SEQUENCE)
+    @Column(name = "IDPRUEBA")
+    private Long idPrueba;
+
     @Required
+    @Column(name="CHARN")
+    private String charn;
+
+    @Required
+    @Column(name="NUMERO")
     private int numero;
 
-    private String fecha;
     @Required
+    @Column(name="FECHA")
+    private String fecha;
+
+    @Required
+    @Column(name="DECIMALES")
     private int decimales;
 
     public Usuario(int id,String nombre, int telefono, String fecha, int salario){
@@ -69,13 +83,25 @@ public class Usuario extends Model{
         cone.cerrarConexion(cone.getConexion());
         return "Exito en el registro";
     }
+
+    //Metodo que busca los usuarios, se usa para iniciar buscarUsuarios
     public static List buscarUsuario(int id){
         //Aqui va lo de buscar
         List<Usuario> resultado = new ArrayList<Usuario>();
 
         Conexion cone = new Conexion();
         String tabla = cone.getTabla();
-        String querySelect= "select IDPRUEBA, CHARN, NUMERO, FECHA, DECIMALES from "+tabla;
+        String querySelect=null;
+
+        //si id ==0, es cuando entra la pagina buscarUsuarios
+        // id!=0 cuando se selecciona un usuario para mostrar
+        if(id ==0){
+            querySelect= "select IDPRUEBA, CHARN, NUMERO, FECHA, DECIMALES from "+tabla;
+        }
+        else{
+            querySelect= "select IDPRUEBA, CHARN, NUMERO, FECHA, DECIMALES from "+tabla+"where IDPRUEBA ="+id;
+        }
+
         ResultSet rs = cone.ejecutarS(querySelect);
         try {
             while (rs.next()) {

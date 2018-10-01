@@ -22,6 +22,9 @@ public class Application extends Controller {
         render();
     }
 
+    //Funcion donde se inicia la pagina buscar_usuarios
+    //La list se llena con el metodo de buscarUsuario
+    //Retorna una lista de objetos usuarios
     public static void buscarUsuarios(){
         int idU=0;
         List<Usuarios> usuarios = Usuario.buscarUsuario(idU);
@@ -41,5 +44,16 @@ public class Application extends Controller {
         Usuario.borrarUsuario(tempId);
         render("Application/baja.html");
         //JOptionPane.showMessageDialog(null , "usuario borradoS");
+    }
+    public static void armarCadena(){
+
+        render();
+        //JOptionPane.showMessageDialog(null , "usuario borradoS");
+    }
+
+    public static List mostrarUsuario(int id){
+        List<Usuario> resultado = new ArrayList<Usuario>();
+       resultado= Usuario.buscarUsuario(id);
+        return resultado;
     }
 }

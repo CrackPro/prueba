@@ -1,0 +1,52 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<h2>Aqui se prueban las cadenas</h2>
+<div class="contenedor">
+    #{form @Application.armarCadena()}
+    <p>
+        <label for="telefono">telefono</label>
+        <input type="text" name="telefono" id="telefono"/>
+    </p>
+    <p>
+        <label for="telefono">Mensaje</label>
+        <input type="text" name="mensaje" id="mensaje"/>
+    </p>
+    <p>
+        <label for="telefonoE">telefono Envio</label>
+        <input type="text" name="telefonoE" id="telefonoE"/>
+    </p>
+    <p>
+         <input type="submit" class=".formRegistro" value="Enviar" />
+    </p>
+    #{/form}
+</div>
+<h2>Aqui se reciben las cadenas</h2>
+<div class="contenedor">
+
+    <p>
+        <label for="fCreacion">Fecha de creacion</label>
+        <input type="text" name="fCreacion" id="fCreacion"/>
+    </p>
+
+    <p>
+        <label for="fActualizacion">Fecha de Actualización</label>
+        <input type="text" name="fActualizacion" id="fActualizacion"/>
+    </p>
+    <p>
+        <label for="numT">Num. al que se envia</label>
+        <input type="text" name="numT" id="numT"/>
+    </p>
+    <p>
+        <label for="numF">Num. del que se envia</label>
+        <input type="text" name="numF" id="numF"/>
+    </p>
+    <p>
+        <label for="mensaje">Mensaje</label>
+        <input type="text" name="mensaje" id="mensaje"/>
+    </p>
+    <p>
+        <label for="status">status</label>
+        <input type="text" name="status" id="status"/>
+    </p>
+</div>
