@@ -31,6 +31,9 @@ POST /altaRegistro                          Application.registroUsuario
 
 GET /buscar_Usuarios                        Application.buscarUsuarios
 
+
+GET /mostrar_usuarios                      Application.mostrarUsuarios
+
 # Import CRUD routes
 *      /admin                                   module:crud
 
